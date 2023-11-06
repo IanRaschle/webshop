@@ -1,0 +1,13 @@
+.product-card {
+  max-width: 300px;
+}
+
+mat-card-subtitle {
+  font-size: smaller;
+}
+
+.images {
+  padding: 16px;
+  max-width: 20%;
+  height: auto;
+}
