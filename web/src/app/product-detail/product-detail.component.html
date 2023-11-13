@@ -1,1 +1,13 @@
-<p>product-detail works!</p>
+<div>
+  <mat-card class="product-detail">
+    <mat-card-title>{{product?.title}}</mat-card-title>
+    <mat-card-subtitle>{{product?.category}}</mat-card-subtitle>
+    <mat-card-content>
+      <p>{{product?.description}}</p>
+      <p>CHF <b>{{product?.price | number:'0.2-2'}}</b></p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="accent">ADD TO CART</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
