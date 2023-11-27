@@ -1,1 +1,13 @@
-<p>shopping-cart works!</p>
+<div>
+  <p *ngIf="this.productsService.getShoppingCart().length == 0" style="text-align: center">Shopping cart is empty</p>
+  <mat-grid-list *ngIf="this.productsService.getShoppingCart().length != 0" cols="3" rowHeight="1:1">
+    <ng-container *ngFor="let product of products">
+      <mat-grid-tile *ngIf="this.productsService.getShoppingCart().includes(product.id)">
+        <app-product [product]="product" [inShoppingCart]="true"
+                     (addToCart)="productsService.addToCart(product.id)"
+                     (removeFromCart)="productsService.removeFromCart(product.id)">
+        </app-product>
+      </mat-grid-tile>
+    </ng-container>
+  </mat-grid-list>
+</div>

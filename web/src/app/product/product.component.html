@@ -7,6 +7,7 @@
   </mat-card-content>
   <mat-card-actions>
     <a mat-button href="./product/{{product.id}}">VIEW</a>
-    <button mat-raised-button color="accent">ADD TO CART</button>
+    <button *ngIf="!inShoppingCart" mat-raised-button color="accent" (click)="addToCart.emit(product)">ADD TO CART</button>
+    <button *ngIf="inShoppingCart" mat-raised-button color="warn" (click)="removeFromCart.emit(product)">REMOVE FROM CART</button>
   </mat-card-actions>
 </mat-card>

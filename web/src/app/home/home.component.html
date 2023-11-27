@@ -1,7 +1,9 @@
 <div>
   <mat-grid-list cols="3" rowHeight="1:1">
     <mat-grid-tile *ngFor="let product of products">
-      <app-product [product]="product">
+      <app-product [product]="product" [inShoppingCart]="this.productsService.getShoppingCart().includes(product.id)"
+                   (addToCart)="productsService.addToCart(product.id)"
+                   (removeFromCart)="productsService.removeFromCart(product.id)">
       </app-product>
     </mat-grid-tile>
   </mat-grid-list>

@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Product} from "./product";
+
+const CART_KEY = "cart";
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +9,7 @@ import {Product} from "./product";
 export class ProductsService {
 
   products: Product[] = [];
+  shoppingCart: number[] = [];
 
   constructor() {
     this.products.push({
@@ -27,9 +30,47 @@ export class ProductsService {
       category: "Grafikkarte",
       remaining: 3, rating: 4.3
     });
+    this.shoppingCart = this.getCart();
   }
 
   getProducts() {
     return this.products;
+  }
+
+  getShoppingCart(): number[] {
+    this.shoppingCart = this.getCart();
+    return this.shoppingCart;
+  }
+
+  addToCart(productId: number) {
+    this.shoppingCart.push(productId);
+    this.saveCart();
+  }
+
+  removeFromCart(productId: number) {
+    this.shoppingCart = this.shoppingCart.filter(id => id != productId);
+    this.saveCart();
+  }
+
+  saveCart() {
+    localStorage.setItem(CART_KEY, this.shoppingCart.toString());
+  }
+
+  deleteCart() {
+    localStorage.removeItem(CART_KEY);
+  }
+
+  getCart(): number[] {
+    let products = localStorage.getItem(CART_KEY);
+    if (products != null) {
+      let arr = products.split(",");
+      if (arr.length == 0) {
+        return [];
+      }
+      let numberArr = arr.filter(s => s != '').map(s => parseInt(s));
+      console.log(numberArr);
+      return numberArr;
+    }
+    return [];
   }
 }
