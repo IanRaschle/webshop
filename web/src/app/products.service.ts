@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Product} from "./product";
+import {HttpClient} from "@angular/common/http";
 
 const CART_KEY = "cart";
 
@@ -11,7 +12,7 @@ export class ProductsService {
   products: Product[] = [];
   shoppingCart: number[] = [];
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.products.push({
       id: 1,
       title: "RTX 4090",
@@ -31,6 +32,10 @@ export class ProductsService {
       remaining: 3, rating: 4.3
     });
     this.shoppingCart = this.getCart();
+  }
+
+  loadProducts(): void {
+    this.http.get<Product[]>("/api/products").subscribe(products => this.products = products);
   }
 
   getProducts() {
@@ -67,9 +72,7 @@ export class ProductsService {
       if (arr.length == 0) {
         return [];
       }
-      let numberArr = arr.filter(s => s != '').map(s => parseInt(s));
-      console.log(numberArr);
-      return numberArr;
+      return arr.filter(s => s != '').map(s => parseInt(s));
     }
     return [];
   }
