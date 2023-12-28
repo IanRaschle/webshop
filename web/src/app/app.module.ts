@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, Provider} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -13,13 +13,17 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {AppRoutingModule, routes} from './app-routing.module';
 import {provideRouter} from "@angular/router";
 import {HomeComponent} from './home/home.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {LoginActivateGuard} from "./login-activate.guard";
-import { LoginComponent } from './login/login.component';
+import {LoginComponent} from './login/login.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {FormsModule} from "@angular/forms";
+import {AuthInterceptor} from "./auth.interceptor";
+
+export const authInterceptorProvider: Provider =
+  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true};
 
 @NgModule({
   declarations: [
@@ -46,7 +50,8 @@ import {FormsModule} from "@angular/forms";
   ],
   providers: [
     provideRouter(routes),
-    LoginActivateGuard
+    LoginActivateGuard,
+    authInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })

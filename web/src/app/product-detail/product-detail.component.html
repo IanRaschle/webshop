@@ -3,11 +3,13 @@
     <mat-card-title>{{product?.title}}</mat-card-title>
     <mat-card-subtitle>{{product?.category}}</mat-card-subtitle>
     <mat-card-content>
+      <img src="{{product?.url}}" alt="Image of product" width="300px" height="auto">
       <p>{{product?.description}}</p>
       <p>CHF <b>{{product?.price | number:'0.2-2'}}</b></p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="accent">ADD TO CART</button>
+      <button *ngIf="!inShoppingCart(product?.id)" mat-raised-button color="accent" (click)="addToCart(product?.id)">ADD TO CART</button>
+      <button *ngIf="inShoppingCart(product?.id)" mat-raised-button color="warn" (click)="removeFromCart(product?.id)">REMOVE FROM CART</button>
     </mat-card-actions>
   </mat-card>
 </div>

@@ -21,8 +21,31 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products = this.productsService.getProducts();
-    this.id$.subscribe(id => this.product = this.products?.find(product => product.id == id));
+    this.productsService.loadProducts().subscribe({
+      next: value => {
+        this.products = value._embedded.products;
+        this.id$.subscribe(id => this.product = this.products?.find(product => product.id == id));
+      }
+    });
   }
 
+  addToCart(id: number | undefined) {
+    if (id != undefined) {
+      this.productsService.addToCart(id);
+    }
+  }
+
+  removeFromCart(id: number | undefined) {
+    if (id != undefined) {
+      this.productsService.removeFromCart(id);
+    }
+  }
+
+  inShoppingCart(id: number | undefined): boolean {
+    if (id != undefined) {
+      return this.productsService.getShoppingCart().includes(id);
+    } else {
+      return false;
+    }
+  }
 }

@@ -2,7 +2,7 @@
 <div>
   <p *ngIf="this.productsService.getShoppingCart().length == 0" style="text-align: center">Der Warenkorb ist leer</p>
   <mat-grid-list *ngIf="this.productsService.getShoppingCart().length != 0" cols="3" rowHeight="1:1">
-    <ng-container *ngFor="let product of products">
+    <ng-container *ngFor="let product of productsService.getProducts()">
       <mat-grid-tile *ngIf="this.productsService.getShoppingCart().includes(product.id)">
         <app-product [product]="product" [inShoppingCart]="true"
                      (addToCart)="productsService.addToCart(product.id)"

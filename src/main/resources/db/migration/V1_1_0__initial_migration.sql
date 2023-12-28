@@ -60,7 +60,7 @@ VALUES
      35,
      1000,
      4.5,
-     'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.minecraft.net%2Fcontent%2Fdam%2Fgames%2Fminecraft%2Fkey-art%2FSUPM_Game-Image_One-Vanilla_672x400.jpg&tbnid=7SCzgY3agQlTcM&vet=12ahUKEwiyx-zazOOCAxU0ygIHHScSCvcQMygCegQIARB1..i&imgrefurl=https%3A%2F%2Fwww.minecraft.net%2Fde-de&docid=X_2cD9fl7yX6MM&w=672&h=400&itg=1&q=minecraft&ved=2ahUKEwiyx-zazOOCAxU0ygIHHScSCvcQMygCegQIARB1'),
+     'https://image.api.playstation.com/vulcan/img/cfn/11307uYG0CXzRuA9aryByTHYrQLFz-HVQ3VVl7aAysxK15HMpqjkAIcC_R5vdfZt52hAXQNHoYhSuoSq_46_MT_tDBcLu49I.png'),
     (7,
      'Valorant',
      'Valorant von Riot Games ist ein Team-basierter Taktik-Shooter aus der First-Person Perspektive, der in der nahen Zukunft spielt. Als Spieler übernimmt man die Kontrolle eines der unterschiedlichen Agenten-Charaktere, die aus verschiedenen Ländern und Kulturen kommen.',
@@ -68,4 +68,4 @@ VALUES
      0,
      1000,
      4.5,
-     'https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.redbull.com%2Fimages%2Fc_limit%2Cw_1500%2Ch_1000%2Cf_auto%2Cq_auto%2Fredbullcom%2F2020%2F6%2F19%2Fukb5r373iqqxtyjtznsc%2Fvalorant-artwork&tbnid=iRvz5MVW4cRfbM&vet=12ahUKEwiWvaCtzeOCAxU33wIHHYwADSAQMygJegUIARCBAQ..i&imgrefurl=https%3A%2F%2Fwww.redbull.com%2Fch-de%2Fvalorant-agent-tier-list&docid=KNngz0fLU1zdgM&w=1500&h=844&q=valorant&ved=2ahUKEwiWvaCtzeOCAxU33wIHHYwADSAQMygJegUIARCBAQ');
+     'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Valorant_logo_-_pink_color_version.svg/640px-Valorant_logo_-_pink_color_version.svg.png');

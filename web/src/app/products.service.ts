@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Product} from "./product";
 import {HttpClient} from "@angular/common/http";
+import {ProductRequest} from "./product-request";
+import {Observable} from "rxjs";
 
 const CART_KEY = "cart";
 
@@ -13,29 +15,12 @@ export class ProductsService {
   shoppingCart: number[] = [];
 
   constructor(private http: HttpClient) {
-    this.products.push({
-      id: 1,
-      title: "RTX 4090",
-      description: "Mega krasse Grafikkarte",
-      pictures: [],
-      price: 12.50,
-      category: "Grafikkarte",
-      remaining: 5, rating: 4.3
-    });
-    this.products.push({
-      id: 2,
-      title: "RTX 4080",
-      description: "Krasse Grafikkarte",
-      pictures: [],
-      price: 10.50,
-      category: "Grafikkarte",
-      remaining: 3, rating: 4.3
-    });
+    this.loadProducts().subscribe(value => this.products = value._embedded.products);
     this.shoppingCart = this.getCart();
   }
 
-  loadProducts(): void {
-    this.http.get<Product[]>("/api/products").subscribe(products => this.products = products);
+  loadProducts(): Observable<ProductRequest> {
+    return this.http.get<ProductRequest>("http://localhost:8080/products");
   }
 
   getProducts() {

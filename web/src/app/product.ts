@@ -6,5 +6,6 @@ export interface Product {
   price: number;
   remaining: number;
   rating: number;
-  pictures: URL[];
+  url: URL;
+  _links: any;
 }

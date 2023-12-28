@@ -1,7 +1,7 @@
 <h2 class="subtitle">Produkte</h2>
 <div>
-  <mat-grid-list cols="3" rowHeight="1:1">
-    <mat-grid-tile *ngFor="let product of products">
+  <mat-grid-list cols="4" rowHeight="1:1">
+    <mat-grid-tile *ngFor="let product of productsService.getProducts()">
       <app-product [product]="product" [inShoppingCart]="this.productsService.getShoppingCart().includes(product.id)"
                    (addToCart)="productsService.addToCart(product.id)"
                    (removeFromCart)="productsService.removeFromCart(product.id)">
