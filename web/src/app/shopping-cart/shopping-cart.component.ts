@@ -7,6 +7,7 @@ import {ProductsService} from "../products.service";
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
+  total: number = 0;
 
   constructor(public productsService: ProductsService) {
   }
@@ -14,4 +15,11 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getTotal() {
+    let total = 0;
+    this.productsService.getProducts()
+      .filter((product) => this.productsService.getShoppingCart().includes(product.id))
+      .forEach(product => total += product.price);
+    return total;
+  }
 }
